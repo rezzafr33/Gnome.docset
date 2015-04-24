@@ -1,0 +1,15 @@
+{
+    "aliases": [
+        "c"
+    ],
+    "feed_url": "",
+    "icon": "glib",
+    "name": "GLib",
+    "oldVersions": [
+    ],
+    "revision": "",
+    "title": "GLib",
+    "urls": [
+    ],
+    "version": "2.44.0"
+}

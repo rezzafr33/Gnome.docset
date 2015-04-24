@@ -1,0 +1,15 @@
+{
+    "aliases": [
+        "c"
+    ],
+    "feed_url": "",
+    "icon": "glib",
+    "name": "Gdk3",
+    "oldVersions": [
+    ],
+    "revision": "",
+    "title": "Gdk3",
+    "urls": [
+    ],
+    "version": "3.14.8"
+}
