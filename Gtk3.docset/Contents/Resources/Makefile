@@ -1,6 +1,6 @@
 PROCESS=../../../src/process.sh
 PACKAGE=gtk3
-VER=3.16.2
+VER=3.16.4
 BOOK=${PACKAGE}-html-${VER}
 LINK=https://developer.gnome.org/${PACKAGE}/${BOOK}.tar.gz
 

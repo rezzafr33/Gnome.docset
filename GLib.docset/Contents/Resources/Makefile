@@ -1,6 +1,6 @@
 PROCESS=../../../src/process.sh
 PACKAGE=glib
-VER=2.44.0
+VER=2.44.1
 BOOK=${PACKAGE}-html-${VER}
 LINK=https://developer.gnome.org/${PACKAGE}/${BOOK}.tar.gz
 
