@@ -1,6 +1,6 @@
 PROCESS=../../../src/process.sh
 PACKAGE=pango
-VER=1.36.8
+VER=1.40.5
 BOOK=${PACKAGE}-html-${VER}
 LINK=https://developer.gnome.org/${PACKAGE}/${BOOK}.tar.gz
 

@@ -1,6 +1,6 @@
 PROCESS=../../../src/process.sh
 PACKAGE=gio
-VER=2.44.1
+VER=2.52.1
 BOOK=${PACKAGE}-html-${VER}
 LINK=https://developer.gnome.org/${PACKAGE}/${BOOK}.tar.gz
 
