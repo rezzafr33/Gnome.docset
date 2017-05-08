@@ -1,6 +1,6 @@
 PROCESS=../../../src/process.sh
-PACKAGE=libgda
-VER=5.2.4
+PACKAGE=libsoup
+VER=2.58.0
 BOOK=${PACKAGE}-html-${VER}
 LINK=https://developer.gnome.org/${PACKAGE}/${BOOK}.tar.gz
 

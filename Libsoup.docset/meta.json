@@ -1,0 +1,15 @@
+{
+    "aliases": [
+        "c"
+    ],
+    "feed_url": "",
+    "icon": "glib",
+    "name": "LIBSOUP",
+    "oldVersions": [
+    ],
+    "revision": "",
+    "title": "LIBSOUP",
+    "urls": [
+    ],
+    "version": "2.58.0"
+}
