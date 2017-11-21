@@ -1,13 +1,25 @@
 PROCESS=../../../src/process.py
+CACHE_DIR=../../../cache/
 PACKAGE=libsoup
 VER=2.60.2
 BOOK=${PACKAGE}-html-${VER}
 LINK=https://developer.gnome.org/${PACKAGE}/${BOOK}.tar.gz
 
-all: document docset
+all: document subpath docset
 
 document:
-	curl -s ${LINK} | tar --transform 's/^${BOOK}/Documents/' -xvz
+	wget -nd -c -P ${CACHE_DIR} ${LINK} && tar -xzvf ${CACHE_DIR}/${BOOK}.tar.gz --transform 's/^${BOOK}/Documents/'
+
+subpath:
+	sed -i 's_http://library.gnome.org/devel/gdk/unstable_../../../../Gdk.docset/Contents/Resources/Documents_g' Documents/*.html; \
+	sed -i 's_http://library.gnome.org/devel/gio/unstable_../../../../Gio.docset/Contents/Resources/Documents_g' Documents/*.html; \
+	sed -i 's_http://library.gnome.org/devel/glib/unstable_../../../../GLib.docset/Contents/Resources/Documents_g' Documents/*.html; \
+	sed -i 's_http://library.gnome.org/devel/gobject/unstable_../../../../GObject.docset/Contents/Resources/Documents_g' Documents/*.html; \
+	sed -i 's_http://library.gnome.org/devel/gtk/unstable_../../../../Gtk3.docset/Contents/Resources/Documents_g' Documents/*.html; \
+	sed -i 's_/home/mclasen/gnome/share/gtk-doc/html/gobject_../../../../GObject.docset/Contents/Resources/Documents_g' Documents/*.html; \
+	sed -i 's_/usr/share/gtk-doc/html/atk_../../../../Atk.docset/Contents/Resources/Documents_g' Documents/*.html; \
+	sed -i 's_/usr/share/gtk-doc/html/libbonobo_../../../../Libbonobo.docset/Contents/Resources/Documents_g' Documents/*.html; \
+	sed -i 's_/usr/share/gtk-doc/html/pango_../../../../Pango.docset/Contents/Resources/Documents_g' Documents/*.html;
 
 docset:
 	${PROCESS} Documents/libsoup-2.4.devhelp2
