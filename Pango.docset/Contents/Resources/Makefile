@@ -1,4 +1,4 @@
-PROCESS=../../../src/process.sh
+PROCESS=../../../src/process.py
 PACKAGE=pango
 VER=1.40.5
 BOOK=${PACKAGE}-html-${VER}
@@ -10,7 +10,7 @@ document:
 	curl -s ${LINK} | tar --transform 's/^${BOOK}/Documents/' -xvz
 
 docset:
-	${PROCESS} Documents/api-index-full.html Documents/index.html
+	${PROCESS} Documents/pango.devhelp2
 
 clean:
 	rm -rf Documents docSet.dsidx

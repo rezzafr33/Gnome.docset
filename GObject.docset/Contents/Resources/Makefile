@@ -1,6 +1,6 @@
-PROCESS=../../../src/process.sh
+PROCESS=../../../src/process.py
 PACKAGE=gobject
-VER=2.52.1
+VER=2.26.1
 BOOK=${PACKAGE}-html-${VER}
 LINK=https://developer.gnome.org/${PACKAGE}/${BOOK}.tar.gz
 
@@ -10,7 +10,7 @@ document:
 	curl -s ${LINK} | tar --transform 's/^${BOOK}/Documents/' -xvz
 
 docset:
-	${PROCESS} Documents/api-index-full.html Documents/index.html
+	${PROCESS} Documents/gobject.devhelp2
 
 clean:
 	rm -rf Documents docSet.dsidx

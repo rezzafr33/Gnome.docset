@@ -2,42 +2,43 @@
 
 import sqlite3
 import sys
+import xml.etree.ElementTree as etree
 
-def load_data():
-    with open('tmp.api', 'r') as f:
-        api_data = []
-        for line in f:
-            api_data.append(line.split())
+types = {'enum':'Enum', 'function':'Function', 'macro':'Macro', 'property':'Property', 'constant':'Constant', 'member': 'Section',
+         'signal':'Event', 'struct':'Struct', 'typedef':'Define', 'union':'Union', 'variable': 'Variable', 'method': 'Method'}
 
-    with open('tmp.module', 'r') as f:
-        module_data = []
-        for line in f:
-            module_data.append(line.split())
+def get_keywords():
+    with open(sys.argv[1]) as f:
+            tree = etree.parse(f)
+            book = tree.getroot()
+            subs = book.findall('.//{http://www.devhelp.net/book}sub')
+            keywords = book.findall('.//{http://www.devhelp.net/book}keyword')
 
-    return api_data, module_data
-
+    return subs, keywords
 
 if __name__ == '__main__':
-    api, module = load_data()
+    subs, keywords = get_keywords()
     conn = sqlite3.connect('docSet.dsidx')
     c = conn.cursor()
+
+    try: c.execute('DROP TABLE searchIndex;')
+    except: pass
+
     try:
         c.execute("CREATE TABLE searchIndex(id INTEGER PRIMARY KEY, name TEXT, type TEXT, path TEXT)")
+        c.execute('CREATE UNIQUE INDEX anchor ON searchIndex (name, type, path);')
     except sqlite3.OperationalError as e:
         print (e)
-        print ('File docSet.dsidx already exists')
         sys.exit(1)
 
     entries = []
+    
+    for sub in subs:
+        entries.append((sub.get('name'), 'Section', sub.get('link')))
+        
+    for keyword in keywords:
+        entries.append((keyword.get('name'), types[keyword.get('type')] if keyword.get('type') else 'Section', keyword.get('link')))
 
-    for i, d in enumerate(api):
-        entries.append((i+1, d[1], d[2], d[0]))
-
-    count = len(entries)
-    for i, d in enumerate(module):
-        url = d[0]
-        name = ' '.join(d[1:])
-        entries.append((count + i + 1, name, 'cat', url))
-
-    c.executemany("INSERT INTO searchIndex VALUES (?, ?, ?, ?)", entries)
+    c.executemany("INSERT OR IGNORE INTO searchIndex(name, type, path) VALUES (?, ?, ?)", entries)
     conn.commit()
+    conn.close()

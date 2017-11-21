@@ -1,6 +1,6 @@
-PROCESS=../../../src/process.sh
+PROCESS=../../../src/process.py
 PACKAGE=libsoup
-VER=2.58.0
+VER=2.60.2
 BOOK=${PACKAGE}-html-${VER}
 LINK=https://developer.gnome.org/${PACKAGE}/${BOOK}.tar.gz
 
@@ -10,7 +10,7 @@ document:
 	curl -s ${LINK} | tar --transform 's/^${BOOK}/Documents/' -xvz
 
 docset:
-	${PROCESS} Documents/index_main.html Documents/index.html
+	${PROCESS} Documents/libsoup-2.4.devhelp2
 
 clean:
 	rm -rf Documents docSet.dsidx

@@ -1,4 +1,4 @@
-PROCESS=../../../src/process.sh
+PROCESS=../../../src/process.py
 PACKAGE=libgda
 VER=5.2.4
 BOOK=${PACKAGE}-html-${VER}
@@ -10,7 +10,7 @@ document:
 	curl -s ${LINK} | tar --transform 's/^${BOOK}/Documents/' -xvz
 
 docset:
-	${PROCESS} Documents/index_main.html Documents/index.html
+	${PROCESS} Documents/libgda-5.0.devhelp2
 
 clean:
 	rm -rf Documents docSet.dsidx
