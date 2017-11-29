@@ -13,6 +13,7 @@ document:
 subpath:
 	sed -i 's_http://library.gnome.org/devel/gdk/unstable_../../../../Gdk.docset/Contents/Resources/Documents_g' Documents/*.html; \
 	sed -i 's_http://library.gnome.org/devel/gio/unstable_../../../../Gio.docset/Contents/Resources/Documents_g' Documents/*.html; \
+	sed -i 's_./../glib/glib_../../../../GLib.docset/Contents/Resources/Documents_g' Documents/*.html; \
 	sed -i 's_http://library.gnome.org/devel/glib/unstable_../../../../GLib.docset/Contents/Resources/Documents_g' Documents/*.html; \
 	sed -i 's_http://library.gnome.org/devel/gobject/unstable_../../../../GObject.docset/Contents/Resources/Documents_g' Documents/*.html; \
 	sed -i 's_http://library.gnome.org/devel/gtk/unstable_../../../../Gtk3.docset/Contents/Resources/Documents_g' Documents/*.html; \
