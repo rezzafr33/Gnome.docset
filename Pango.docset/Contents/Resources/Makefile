@@ -1,7 +1,7 @@
 PROCESS=../../../src/process.py
 CACHE_DIR=../../../cache/
 PACKAGE=pango
-VER=1.40.5
+VER=$(shell jq -r '.${PACKAGE}' ../../../versions.json)
 BOOK=${PACKAGE}-html-${VER}
 LINK=https://developer.gnome.org/${PACKAGE}/${BOOK}.tar.gz
 

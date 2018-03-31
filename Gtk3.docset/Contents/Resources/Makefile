@@ -1,7 +1,7 @@
 PROCESS=../../../src/process.py
 CACHE_DIR=../../../cache/
 PACKAGE=gtk3
-VER=3.22.26
+VER=$(shell jq -r '.${PACKAGE}' ../../../versions.json)
 BOOK=${PACKAGE}-html-${VER}
 LINK=https://developer.gnome.org/${PACKAGE}/${BOOK}.tar.gz
 

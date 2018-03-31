@@ -1,7 +1,7 @@
 PROCESS=../../../src/process.py
 CACHE_DIR=../../../cache/
 PACKAGE=libgda
-VER=5.2.4
+VER=$(shell jq -r '.${PACKAGE}' ../../../versions.json)
 BOOK=${PACKAGE}-html-${VER}
 LINK=https://developer.gnome.org/${PACKAGE}/${BOOK}.tar.gz
 
@@ -14,6 +14,7 @@ subpath:
 	sed -i 's_http://library.gnome.org/devel/gdk/unstable_../../../../Gdk.docset/Contents/Resources/Documents_g' Documents/*.html; \
 	sed -i 's_http://library.gnome.org/devel/gio/unstable_../../../../Gio.docset/Contents/Resources/Documents_g' Documents/*.html; \
 	sed -i 's_http://library.gnome.org/devel/glib/unstable_../../../../GLib.docset/Contents/Resources/Documents_g' Documents/*.html; \
+	sed -i 's_https://developer.gnome.org/glib/unstable_../../../../GLib.docset/Contents/Resources/Documents_g' Documents/*.html; \
 	sed -i 's_http://library.gnome.org/devel/gobject/unstable_../../../../GObject.docset/Contents/Resources/Documents_g' Documents/*.html; \
 	sed -i 's_http://library.gnome.org/devel/gtk/unstable_../../../../Gtk3.docset/Contents/Resources/Documents_g' Documents/*.html; \
 	sed -i 's_/home/mclasen/gnome/share/gtk-doc/html/gobject_../../../../GObject.docset/Contents/Resources/Documents_g' Documents/*.html; \
