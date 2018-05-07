@@ -9,6 +9,7 @@
   "gtk3": "3.22.30",
   "libbonobo": "2.32.1",
   "libecal": "3.10.2",
+  "libedataserver": "3.10.2",
   "libgda": "5.2.4",
   "libsecret": "0.18.6",
   "libsoup": "2.60.2",
